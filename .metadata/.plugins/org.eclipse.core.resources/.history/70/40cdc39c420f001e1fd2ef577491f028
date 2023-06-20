@@ -1,0 +1,40 @@
+package restassuredoauth2;
+
+import static io.restassured.RestAssured.*;
+import org.testng.annotations.Test;
+import io.restassured.path.json.JsonPath;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class Oauth2Integration {
+	@Test
+	public void selenium() {
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://rahulshettyacademy.com/");
+	}
+	
+	
+	@Test
+	public void test() {
+		String accessTokenResponse =
+		given()
+		.queryParam("code", "")
+		.queryParam("clientId", "692183103107-p0m7ent2hk7suguv4vq22hjcfhcr43pj.apps.googleusercontent.com")
+		.queryParam("client_secret", "erZOWM9g3UtwNRj340YYaK_W")
+		.queryParam("redirect_uri", "https://rahulshettyacademy.com/getCourse.php")
+		.queryParam("grant_type", "authorization_code")
+		.when().post("https://www.googleapis.com/oauth2/v4/token").asString();
+		JsonPath js = new JsonPath(accessTokenResponse);
+		String access_token = js.getString("access_token");
+		System.out.println(js);
+		
+		
+		String response = 
+        given()
+        .queryParam("access_token", access_token)
+        
+        .when()
+        .get("https://rahulshettyacademy.com/getCourse.php").asString();
+		System.out.println(response);
+    }
+
+}

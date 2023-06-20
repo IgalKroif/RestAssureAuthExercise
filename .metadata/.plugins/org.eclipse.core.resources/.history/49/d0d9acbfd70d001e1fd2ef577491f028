@@ -1,0 +1,34 @@
+package jirarest;
+
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import static io.restassured.RestAssured.given;
+
+public class JiraTest {
+	@Test
+	public static void addComment() {
+		RestAssured.baseURI = "http://localhost:8080";
+		
+		
+		given()
+		.pathParam("id", 10012)
+		.body("{\r\n"
+				+ "    \"fields\": {\r\n"
+				+ "        \"project\": {\r\n"
+				+ "            \"key\": \"RES\"\r\n"
+				+ "        },\r\n"
+				+ "        \"summary\": \"REST ye merry gentelman\",\r\n"
+				+ "        \"description\" : \"Creating of an issue using project keys and issue type names using the RESI API\",\r\n"
+				+ "        \"issuetype\": {\r\n"
+				+ "            \"name\":\"Bug\"\r\n"
+				+ "        }\r\n"
+				+ "    }\r\n"
+				+ "}")
+		.when()
+		.post("/rest/api/2/issue/{id}/comment")
+		.then();
+	}
+	
+
+}

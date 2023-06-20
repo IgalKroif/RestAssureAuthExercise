@@ -1,0 +1,28 @@
+package files;
+
+import static io.restassured.RestAssured.given;
+
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
+
+public class DynamicJson {
+	@Test
+	public void addBook() {
+		String response =
+		RestAssured.baseURI = "https://rahulshettyacademy.com/";
+		given()
+		.header("Content-Type", "application/json")
+		.body(payload.addBook("aeEbcdefgh", "2927"))
+		.when()
+		.post("Library/Addbook.php")
+		.then().assertThat().statusCode(200)
+		.extract().response().asString();
+		 JsonPath js = ReUsableMethods.rawToJson(response);
+		 String getsId = js.get("ID");
+		 System.out.println(getsId);
+		 
+	}
+
+}

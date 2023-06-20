@@ -1,0 +1,55 @@
+package restassuredoauth2;
+
+import static io.restassured.RestAssured.*;
+import org.testng.annotations.Test;
+import io.restassured.path.json.JsonPath;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.chrome.*;
+public class Oauth2Integration {
+	@Test
+	public void selenium() {
+	    System.setProperty("webdriver.chrome.driver", "C:\\Users\\kyigal\\Desktop\\chromedriver.exe");
+	    ChromeDriver driver= new ChromeDriver();
+	    driver.get("https://accounts.google.com/o/oauth2/v2/auth?scope=https://www.googleapis.com/auth/userinfo.email&auth_url=https://accounts.google.com/o/oauth2/v2/auth&client_id=692183103107-p0m7ent2hk7suguv4vq22hjcfhcr43pj.apps.googleusercontent.com&response_type=code&redirect_uri=https://rahulshettyacademy.com/getCourse.php");
+	   
+	    WebElement findMail = driver.findElement(By.id("identifierId"));
+	    findMail.click(); 
+	    findMail.sendKeys("igaldatester@gmail.com");
+	    
+	    driver.findElement(By.id("identifierId")).sendKeys(Keys.ENTER);
+	    //WebElement nextButton = driver.findElement(By.id("identifierNext"));;
+	    //nextButton.click();
+	    
+	    //driver.quit();
+	}
+	
+	
+	@Test
+	public void test() {
+		String accessTokenResponse =
+		given()
+		.queryParam("code", "4%2F0AbUR2VN_4HnoH5ZuUxGjkB00FIkPA_TWLD9ucZhku7hJRVE9QVPg5kaAhZIpMe6QPYbOMg")
+		.queryParam("clientId", "692183103107-p0m7ent2hk7suguv4vq22hjcfhcr43pj.apps.googleusercontent.com")
+		.queryParam("client_secret", "erZOWM9g3UtwNRj340YYaK_W")
+		.queryParam("redirect_uri", "https://rahulshettyacademy.com/getCourse.php")
+		.queryParam("grant_type", "authorization_code")
+		.when().post("https://www.googleapis.com/oauth2/v4/token").asString();
+		JsonPath js = new JsonPath(accessTokenResponse);
+		String access_token = js.getString("access_token");
+		System.out.println(js);
+		
+		
+		String response = 
+        given()
+        .queryParam("access_token", access_token)
+        
+        .when()
+        .get("https://rahulshettyacademy.com/getCourse.php").asString();
+		System.out.println(response);
+    }
+
+}

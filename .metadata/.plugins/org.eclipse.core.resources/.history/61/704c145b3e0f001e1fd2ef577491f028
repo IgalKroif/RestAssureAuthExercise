@@ -1,0 +1,19 @@
+package restassuredoauth2;
+
+import static io.restassured.RestAssured.*;
+import org.testng.annotations.Test;
+
+public class Oauth2Integration {
+	
+	@Test
+	public void test() {
+		String response = 
+        given()
+        .queryParam("access_token", "")
+        
+        .when()
+        .get("https://rahulshettyacademy.com/getCourse.php").asString();
+		System.out.println(response);
+    }
+
+}

@@ -1,0 +1,15 @@
+package jirarest;
+
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+
+
+public class JiraTest {
+	@Test
+	public static void addComment() {
+		RestAssured.baseURI = "http://localhost:8080";
+	}
+	
+
+}

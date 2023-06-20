@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/commons-lang3-3.11.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/groovy-3.0.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/groovy-json-3.0.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/groovy-xml-3.0.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/hamcrest-2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/httpclient-4.5.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/httpcore-4.4.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/httpmime-4.5.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/jakarta.activation-api-1.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/jakarta.xml.bind-api-2.3.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/jaxb-impl-2.3.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/jcommander-1.82.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/jquery-3.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/json-path-4.3.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/rest-assured-4.3.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/rest-assured-common-4.3.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/slf4j-api-1.7.36.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/tagsoup-1.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/testng-7.8.0.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/kyigal/Desktop/JARS/xml-path-4.3.3.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

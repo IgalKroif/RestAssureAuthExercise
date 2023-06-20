@@ -1,0 +1,30 @@
+package jirarest;
+
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import static io.restassured.RestAssured.given;
+
+public class JiraTest {
+	@Test
+	public static void addComment() {
+		RestAssured.baseURI = "http://localhost:8080";
+		
+		
+		given()
+		.pathParam("id", "10012").log().all()
+		.header("content-type", "application/json")
+		.body("{\r\n"
+				+ "    \"body\": \"FirstRestAssuredComment\",\r\n"
+				+ "    \"visibility\": {\r\n"
+				+ "        \"type\": \"role\",\r\n"
+				+ "        \"value\": \"Administrators\"\r\n"
+				+ "    }\r\n"
+				+ "}")
+		.when()
+		.post("/rest/api/2/issue/{id}/comment")
+		.then();
+	}
+	
+
+}

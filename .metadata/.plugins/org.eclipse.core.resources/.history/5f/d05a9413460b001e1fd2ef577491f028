@@ -1,0 +1,93 @@
+package files;
+
+import static io.restassured.RestAssured.given;
+
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
+
+public class DynamicJson {
+	@Test
+ RestAssured.baseURI = "https://rahulshettyacademy.com/";
+    
+    // Create the payload using the addBook() method
+    String payload = addBook("abcezfg", "0001");
+    
+    // Make the POST request with the payload
+    String response = given()
+        .header("Content-Type", "application/json")
+        .body(payload)
+    .when()
+        .post("Library/Addbook.php")
+    .then()
+        .assertThat()
+        .statusCode(200)
+        .extract()
+        .response()
+        .asString();
+
+    // Parse the response JSON
+    JsonPath js = new JsonPath(response);
+    String getsId = js.get("ID");
+    System.out.println(getsId);
+}
+With these changes, the addBook() method will use the addBook() method to generate the payload, and then it will use that payload as the body in the POST request. The response will be stored in the response variable, and you can parse it using the JsonPath class as shown in your code snippet.
+
+Please make sure you have the necessary imports for RestAssured and JsonPath in your class.
+
+
+
+
+
+User
+What was the issue with my code?
+ChatGPT
+The issue with your code was that the payload variable in the addBook() method was defined as a local variable within the addBook(String isbn, String aisle) method, so it was not accessible within the addBook() method.
+
+To resolve the issue, you can make the following changes to your code:
+
+Make the payload variable a class-level variable, so it can be accessed by both methods.
+java
+Copy code
+private static String payload = "{\r\n"
+        + "\"name\":\"Learn Appium Automation with Java\",\r\n"
+        + "\"isbn\":\"%s\",\r\n"
+        + "\"aisle\":\"%s\",\r\n"
+        + "\"author\":\"John foer\"\r\n"
+        + "}";
+Modify the addBook(String isbn, String aisle) method to use String.format() to inject the isbn and aisle values into the payload.
+java
+Copy code
+public static String addBook(String isbn, String aisle) {
+    return String.format(payload, isbn, aisle);
+}
+In the addBook() method, use addBook() to generate the payload by passing the isbn and aisle values.
+java
+Copy code
+public void addBook() {
+    String response =
+    RestAssured.baseURI = "https://rahulshettyacademy.com/";
+    given()
+        .header("Content-Type", "application/json")
+        .body(addBook("abcezfg", "0001"))
+    .when()
+        .post("Library/Addbook.php")
+    .then()
+        .assertThat().statusCode(200)
+        .extract().response().asString();
+     
+    JsonPath js = ReUsableMethods.rawToJson(response);
+    String getsId = js.get("ID");
+    System.out.println(getsId);
+}
+By making these changes, the payload variable is now accessible within the addBook() method, allowing you to generate the payload using the addBook(String isbn, String aisle) method and use it as the body in the POST request.
+
+
+
+
+
+
+
+
+}
